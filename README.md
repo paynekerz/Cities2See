@@ -16,9 +16,9 @@ SO THAT I can visit them later
 
 ## Wireframe
 
-![Screenshot of Wireframe](public\images\Cities2See.PNG)
-![Screenshot of Wireframe](public\images\Cities2See-3.PNG)
-![Screenshot of Wireframe](public\images\Cities2See-2.PNG)
+![Screenshot of Wireframe](public/images/Cities2See.PNG)
+![Screenshot of Wireframe](public/images/Cities2See-3.PNG)
+![Screenshot of Wireframe](public/images/Cities2See-2.PNG)
 
 
 ## API

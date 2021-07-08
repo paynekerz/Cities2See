@@ -12,7 +12,7 @@ router.get('/', authAuth, async (req, res) => {
             order: [['name', '']],
         });
 
-        const users = userData.map((project)) => project.get
+        const users = userData.map((project)) => project.get({ plain: true}));
     }
 
 

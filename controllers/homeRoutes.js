@@ -1,11 +1,16 @@
 //HOME ROUTES (all get requests)---------------------
 const router = require('express').router();
-
-const { User } = require('../models'); 
-
+const { User, Search } = require('../models'); 
 const withAuth = require('../utils/auth'); 
 
+<<<<<<< HEAD
 router.get('/', withAuth, async (req, res) => {
+=======
+//ALL THE GET REQUESTS
+
+// home is /
+router.get('/', authAuth, async (req, res) => {
+>>>>>>> 68b9ddae4817f98664f0b4f2d6cece37ab1153ea
     try {
       const userData = await User.findAll({
         attributes: { exclude: ['password'] },
@@ -23,6 +28,7 @@ router.get('/', withAuth, async (req, res) => {
     }
   });
 
+<<<<<<< HEAD
   router.get('/login', (req, res) => {
     if (req.session.logged_in) {
       res.redirect('/');
@@ -36,8 +42,15 @@ router.get('/', withAuth, async (req, res) => {
 // home is /
 // sign in is /signin
 // sign up is /signup
+=======
+
+});
+
+>>>>>>> 68b9ddae4817f98664f0b4f2d6cece37ab1153ea
 // dashboard is /dashboard -> when user is logged in
+
 // geodb is /geodb -> our api
+<<<<<<< HEAD
 //USER ROUTES (all post requests) ---------------------
 // for post login  /api/users/login
 // for post logout  /api/users/logout
@@ -45,3 +58,17 @@ router.get('/', withAuth, async (req, res) => {
 //GEODB ROUTES (post, delete) --------------------------
 // for post /api/geodb
 // for delete /api/geodb/:id
+=======
+
+// sign in is /signin
+
+
+// sign up is /signup
+
+//logout is /logout
+
+
+
+
+router.post()
+>>>>>>> 68b9ddae4817f98664f0b4f2d6cece37ab1153ea

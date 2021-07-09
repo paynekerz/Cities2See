@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
+<<<<<<< HEAD
 const homeRoutes = require('./homeRoutes');
 
 <<<<<<< HEAD
@@ -73,9 +74,19 @@ router.post('/login', async (req, res) => {
 // for post /api/geodb
 // for delete /api/geodb/:id
 
+=======
+const apiRoutes = require('./api');
+const homeRoutes = require('./homeRoutes.js');
+>>>>>>> 68b9ddae4817f98664f0b4f2d6cece37ab1153ea
 
+router.use('/api', apiRoutes);
+router.use('/', homeRoutes);
 
 
 module.exports = router;
 
+<<<<<<< HEAD
 >>>>>>> 05186d05a0d98b5c3b4b0097d13511f1b2f44225
+=======
+
+>>>>>>> 68b9ddae4817f98664f0b4f2d6cece37ab1153ea

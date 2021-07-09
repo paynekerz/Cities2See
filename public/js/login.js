@@ -1,5 +1,6 @@
 const login = async (event) => {
         event.preventDefault();
+        //make sure consts are named like keys in model
         const username = document.querySelector("#").value.trim();
         const password = document.querySelector("#").value.trim();
 
@@ -14,5 +15,6 @@ const login = async (event) => {
                 document.location.replace("");
             } 
         };
-    }
-};
+}
+
+document.querySelector("").addEventListener("click", login);

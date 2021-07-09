@@ -1,6 +1,7 @@
-class Search {
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
-}
+class Search extends Model {}
 
 Search.init(
     {
@@ -10,10 +11,18 @@ Search.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        search: {
+        city: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: "user",
+                key: "id",
+            },
+        },
+
     },
     {
         sequelize,

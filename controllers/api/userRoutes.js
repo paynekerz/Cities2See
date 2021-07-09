@@ -1,11 +1,4 @@
 const router = require('express').Router();
-<<<<<<< HEAD
-const userRoutes = require('./userRoutes');
-
-router.use('/users', userRoutes);
-
-module.exports = router;
-=======
 const { User } = require('../../models');
 //USER ROUTES (all post requests) ---------------------
 
@@ -74,4 +67,3 @@ router.post('/login', async (req, res) => {
 
 
 
->>>>>>> 68b9ddae4817f98664f0b4f2d6cece37ab1153ea

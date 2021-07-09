@@ -14,5 +14,6 @@ const login = async (event) => {
                 document.location.replace("");
             } 
         };
-    }
-};
+}
+
+document.querySelector("").addEventListener("click", login);

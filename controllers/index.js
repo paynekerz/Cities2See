@@ -1,5 +1,8 @@
 const router = require('express').Router();
 
+const apiRoutes = require('../models');
+const 
+
 //HOME ROUTES (all get requests)---------------------
 // home is /
 // sign in is /signin

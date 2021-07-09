@@ -1,10 +1,11 @@
 //HOME ROUTES (all get requests)---------------------
 const router = require('express').router();
-
-const { User } = require('../models'); 
-
+const { User, Search } = require('../models'); 
 const withAuth = require('../utils/auth'); 
 
+//ALL THE GET REQUESTS
+
+// home is /
 router.get('/', authAuth, async (req, res) => {
     try {
         const userData = await User.findAll({
@@ -16,18 +17,20 @@ router.get('/', authAuth, async (req, res) => {
     }
 
 
-})
-// home is /
-// sign in is /signin
-// sign up is /signup
+});
+
 // dashboard is /dashboard -> when user is logged in
+
 // geodb is /geodb -> our api
-//USER ROUTES (all post requests) ---------------------
-// for post login  /api/users/login
-// for post logout  /api/users/logout
-// for post create new user /api
-//GEODB ROUTES (post, delete) --------------------------
-// for post /api/geodb
-// for delete /api/geodb/:id
+
+// sign in is /signin
+
+
+// sign up is /signup
+
+//logout is /logout
+
+
+
 
 router.post()

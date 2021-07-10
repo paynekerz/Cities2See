@@ -43,7 +43,7 @@ router.post("/geodb", withAuth, async (req, res) => {
 
                 const cityData = response.data;
 
-                const postCityData = await Search.create({
+                const postCityData =  Search.create({
                     //check if cityData is array before using spread operator
                     ...cityData,
                     user_id: req.session.user_id,

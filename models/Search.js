@@ -11,7 +11,7 @@ Search.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        city: {
+        cityParam: {
             type: DataTypes.STRING,
             allowNull: false,
         },

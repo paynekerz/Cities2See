@@ -34,44 +34,49 @@ router.get("/signup", async (req, res) => {
     }
 });
 
-// dashboard is /dashboard -> when user is logged in
-router.get("/dashboard", withAuth, async (req, res) => {
-    try{
-        // find the user based on their user_id
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ["password"] },
-        });
-
-        const user = userData.get({ plain: true });
-
-        //find all of the city data that was saved by the user
-        // the data comes from the instance of Search
-        const searchData = await Search.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ["username"],
-                }
-            ]
-        });
-
-        //create an array of all the city data
-        const cities = searchData.map((city) => city.get({ plain: true }));
-
-        // console.log(posts);
-
-        res.render("dashboard", {
-            ...user,
-            //send cities data into dashboard.handlebars to fill our our cards with {{}}
-            cities,
-            logged_in: true
-        });
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+//Test route for dashboard
+router.get("/dashboard", async (req, res) => {
+    res.render("dashboard");
 });
+
+// dashboard is /dashboard -> when user is logged in
+// router.get("/dashboard", withAuth, async (req, res) => {
+//     try{
+//         // find the user based on their user_id
+//         const userData = await User.findByPk(req.session.user_id, {
+//             attributes: { exclude: ["password"] },
+//         });
+
+//         const user = userData.get({ plain: true });
+
+//         //find all of the city data that was saved by the user
+//         // the data comes from the instance of Search
+//         const searchData = await Search.findAll({
+//             include: [
+//                 {
+//                     model: User,
+//                     attributes: ["username"],
+//                 }
+//             ]
+//         });
+
+//         //create an array of all the city data
+//         const cities = searchData.map((city) => city.get({ plain: true }));
+
+//         // console.log(posts);
+
+//         res.render("dashboard", {
+//             ...user,
+//             //send cities data into dashboard.handlebars to fill our our cards with {{}}
+//             cities,
+//             logged_in: true
+//         });
+
+//     } catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
 
 
 //logout is /logout

@@ -7,24 +7,24 @@
 <div class="row">
         <div class="col s4">
             <form class="searchACity">
-                <h4>Add A City</h4>
+                <h4>Search A City</h4>
                 
                 <div class="input-field">
                     <input id="searchbar" type="text" class="validate">
                     <label for="searchbar">City Name</label>
-                    <button class="btn waves-effect waves-light teal" type="submit" name="action" id="searchBtn">Search! </button>
+                    <button class="btn waves-effect waves-light teal" type="submit" name="action" id="searchBtn">Search</button>
                 </div>
                 Visited Cities
             </form>
 
             <div class="cityOptions"> 
-                <h5>City Options</h5>
+                <h5>Select Your Preferred City</h5>
             </div>
-
         </div>
 
 
         <div class="col s8">
+            <h2> Welcome back {{username}}! </h2>
             <div class="row">
                 <div class="col s12 m8x">
                 {{#each cities as |city|}}

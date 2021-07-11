@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 
 //ALL THE GET REQUESTS
 
-// home, where you login is simply /
+// home, where you login or signup is simply /
 router.get("/", async (req, res) => {
     try {
 
@@ -22,26 +22,13 @@ router.get("/", async (req, res) => {
     }
 });
 
-// sign up is /signup
-router.get("/signup", async (req, res) => {
-    try{
-        if(!req.session.logged_in) {
-            //Render login.handlebars
-            res.render("signup");
-        }
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
 // dashboard is /dashboard -> when user is logged in
 router.get("/dashboard", withAuth, async (req, res) => {
     try{
         // find the user based on their user_id
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ["password"] },
+            include: [{ model: Search},]
         });
 
         const user = userData.get({ plain: true });

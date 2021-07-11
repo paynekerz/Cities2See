@@ -3,7 +3,7 @@ const { User } = require('../../models');
 //USER ROUTES (all post requests) ---------------------
 
 
-// for post create new user   /api
+// for post create new user   /api/users
 router.post('/', async (req, res) => {
     try {
       const userData = await User.create(req.body);

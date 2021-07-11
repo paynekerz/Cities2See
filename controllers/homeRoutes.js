@@ -34,19 +34,7 @@ router.get("/signup", async (req, res) => {
     }
 });
 
-//Test route for dashboard!
-// router.get("/dashboard", async (req, res) => {
-//     const searchData = await Search.findAll({
-        
-//     });
-
-//     //create an array of all the city data
-//     const cities = searchData.map((city) => city.get({ plain: true }));
-//     res.render("dashboard", ...cities);
-// });
-
 // dashboard is /dashboard -> when user is logged in
-
 router.get("/dashboard", withAuth, async (req, res) => {
     try{
         // find the user based on their user_id

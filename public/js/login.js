@@ -17,4 +17,11 @@ const login = async (event) => {
         };
 }
 
+const redirectSignup = async (event) => {
+    event.preventDefault();
+
+    document.location.replace("/signup");
+}
+
 document.querySelector("#signInBtn").addEventListener("click", login);
+document.querySelector("#signUpBtn").addEventListener("click", redirectSignup);

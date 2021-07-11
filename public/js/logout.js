@@ -9,4 +9,4 @@ const logout = async (event) => {
         document.location.replace("/");
     }
 }
-document.querySelector("#logoutBtn").addEventListener("click", logout)
+document.querySelector("#logoutBtn").addEventListener("click", logout);

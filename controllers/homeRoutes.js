@@ -9,10 +9,12 @@ const withAuth = require('../utils/auth');
 router.get("/", async (req, res) => {
     try {
 
-        if(!req.session.logged_in) {
-            //Render login.handlebars
-            res.render("login");
+        if(req.session.logged_in) {
+            res.redirect("/dashboard");
+            return;
         }
+        //Render login.handlebars
+        res.render("login");
         
     } catch (err) {
         console.log(err);

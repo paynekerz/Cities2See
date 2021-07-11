@@ -62,10 +62,9 @@ const cityDataEventHandler = async (event) => {
         });
 
         if(response.ok) {
-            // document.location.replace("/dashboard");
             console.log("Sending the id for params");
-
-
+            
+            document.location.replace("/dashboard");
         } else {
             alert('City details are unavailable');
         }

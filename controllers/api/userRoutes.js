@@ -3,7 +3,7 @@ const { User } = require('../../models');
 //USER ROUTES (all post requests) ---------------------
 
 
-// for post create new user /api
+// for post create new user   /api
 router.post('/', async (req, res) => {
     try {
       const userData = await User.create(req.body);
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   // for post login  /api/users/login
 router.post('/login', async (req, res) => {
     try {
-      const userData = await User.findOne({ where: { email: req.body.email } });
+      const userData = await User.findOne({ where: { username: req.body.username } });
   
       if (!userData) {
         res

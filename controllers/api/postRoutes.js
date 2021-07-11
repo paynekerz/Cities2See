@@ -7,8 +7,7 @@ const withAuth = require("../../utils/auth");
 //GEODB ROUTES (post, delete) --------------------------
 // for post /api/geodb
 // this first post request will help us get a list of city names to dynamically create buttons in the dashboard after a search
-router.post("/", async (req, res) => {
-    //removed the withAuth for now!
+router.post("/", withAuth, async (req, res) => {
     try{
         const cit = req.body.cityParam;
         
@@ -29,6 +28,7 @@ router.post("/", async (req, res) => {
 
             // console.log(cities);
 
+            //sending it back to front end
             res.json(cities);
 
 
@@ -44,8 +44,7 @@ router.post("/", async (req, res) => {
 
 // for post /api/geodb/citydetails
 // this one will create our instance of our Search model
-router.post("/citydetails", async (req, res) => {
-    //removed the withAuth for now!
+router.post("/citydetails", withAuth, async (req, res) => {
     try {
         const cityId = req.body.id;
         console.log(cityId);
@@ -65,31 +64,7 @@ router.post("/citydetails", async (req, res) => {
             const cityDetails = response.data.data;
             console.log(cityDetails);
 
-            // const city = {city : response.data.data.city};
-            // const region = {region : response.data.data.region};
-            // const population = {population : response.data.data.population};
-            // const elevationMeters = {elevationMeters : response.data.data.elevationMeters};
-            // const timezone = {timezone : response.data.data.timezone};
-            // const latitude = {latitude : response.data.data.latitude};
-            // const longitude = {longitude : response.data.data.longitude};
-
-            const city = response.data.data.city;
-            const region = response.data.data.region;
-            const population = response.data.data.population;
-            const  elevationMeters = response.data.data.elevationMeters;
-            const timezone = response.data.data.timezone;
-            const latitude = response.data.data.latitude;
-            const longitude = response.data.data.longitude;
-
-
             const postCityData =  Search.create({
-                // ...city,
-                // ...region,
-                // ...population,
-                // ...elevationMeters,
-                // ...timezone,
-                // ...latitude,
-                // ...longitude,
                 ...cityDetails,
                 user_id: req.session.user_id,
             });

@@ -79,7 +79,5 @@ document.querySelector(".searchACity").addEventListener("submit", searchEventHan
 document.querySelector(".cityOptions").addEventListener("click", cityDataEventHandler);
 
 
-//the const name for what is being sent through the body is the same as the key in Search.js
-
 
 //delete city card

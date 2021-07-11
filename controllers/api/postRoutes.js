@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
         
             const citiesData = response.data.data;
 
-            const cities = citiesData.map(city => ({city: city.name, state: city.regionCode}));
+            const cities = citiesData.map(city => ({city: city.name, state: city.regionCode, id: city.wikiDataId}));
 
             console.log(cities);
 

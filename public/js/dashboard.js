@@ -16,7 +16,27 @@ const searchEventHandler = async (event) => {
         if(response.ok) {
             console.log("we got the first API post");
             const result = await response.json();
-            console.log(result);
+            // console.log(result);
+
+            //convert object into an array
+            const cities = Object.values(result);
+            console.log(cities); //shows an array of objects with key of city and value of id
+
+            const citiesBtnDiv = document.querySelector(".cityOptions");
+
+            for(let index = 0; index < cities.length; index++) {
+                const cityName = cities[index].city;
+                const cityState = cities[index].state;
+                const cityId = cities[index].id;
+                
+                const button= document.createElement("button");
+                button.setAttribute("id", cityId);
+                button.setAttribute("type", "submit");
+                button.textContent= `${cityName}, ${cityState}`;
+
+                citiesBtnDiv.append(button);
+              
+            }
         } else {
             alert('Invalid search');
         }

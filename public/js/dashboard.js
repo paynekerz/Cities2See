@@ -30,8 +30,9 @@ const searchEventHandler = async (event) => {
                 const cityId = cities[index].id;
                 
                 const button= document.createElement("button");
-                button.setAttribute("id", cityId);
+                button.setAttribute("data-id", cityId);
                 button.setAttribute("type", "submit");
+                button.setAttribute("id","cityBtn");
                 button.textContent= `${cityName}, ${cityState}`;
 
                 citiesBtnDiv.append(button);
@@ -44,26 +45,39 @@ const searchEventHandler = async (event) => {
 
 
 
-// const cityDataEventHandler = async (event) => {
-//     event.preventDefault();
+const cityDataEventHandler = async (event) => {
+    event.preventDefault();
+    
+    const id = event.target.getAttribute("data-id");
+    console.log("I am being clicked " + id);
 
-//     const cityButton = document.querySelector("#").getAttribute("id");
 
-//     const response = await fetch("/api/geodb/citydetails", {
-//         method: "POST",
-//         body: JSON.stringify({  }),
-//         headers: { "Content-Type": "application/json" },
-//     });
+    if(event.target.hasAttribute("data-id")) {
+        const id = event.target.getAttribute("data-id");
 
-//     if(response.ok) {
-//         document.location.replace("/dashboard");
-//     } else {
-//         alert('City details are unavailable');
-//     }
+        const response = await fetch("/api/geodb/citydetails", {
+            method: "POST",
+            body: JSON.stringify({ id }),
+            headers: { "Content-Type": "application/json" },
+        });
 
-// }
+        if(response.ok) {
+            // document.location.replace("/dashboard");
+            console.log("Sending the id for params");
+
+
+        } else {
+            alert('City details are unavailable');
+        }
+
+    };
+
+
+
+}
 
 document.querySelector(".searchACity").addEventListener("submit", searchEventHandler);
+document.querySelector(".cityOptions").addEventListener("click", cityDataEventHandler);
 
 
 //the const name for what is being sent through the body is the same as the key in Search.js

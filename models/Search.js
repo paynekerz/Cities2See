@@ -11,8 +11,32 @@ Search.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        cityParam: {
+        city: {
             type: DataTypes.STRING,
+            allowNull: false,
+        },
+        regionCode: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        population: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        elevationMeters: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        timezone: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        latitude: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        longitude: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         user_id: {
@@ -28,7 +52,7 @@ Search.init(
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        underscored: true,
+        underscored: false,
         modelName: 'search',
       }
 );

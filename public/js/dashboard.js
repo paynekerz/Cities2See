@@ -1,5 +1,4 @@
 //to handle searchbar query and get data from API
-
 const searchEventHandler = async (event) => {
     event.preventDefault();
 
@@ -44,7 +43,6 @@ const searchEventHandler = async (event) => {
 };
 
 
-
 const cityDataEventHandler = async (event) => {
     event.preventDefault();
     
@@ -70,9 +68,6 @@ const cityDataEventHandler = async (event) => {
         }
 
     };
-
-
-
 }
 
 document.querySelector(".searchACity").addEventListener("submit", searchEventHandler);

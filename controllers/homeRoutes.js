@@ -75,7 +75,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
         res.render("dashboard", {
             ...user,
             //send cities data into dashboard.handlebars to fill our our cards with {{}}
-            ...cities,
+            cities,
             logged_in: true
         });
 

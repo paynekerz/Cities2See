@@ -1,3 +1,68 @@
 #loginDiv, #signupDiv {
     margin-top: 15rem;
+   
 }
+
+#loginDiv {
+    margin-top: 15rem;
+    border: rgba(0, 0, 0, 0.575) 2px solid;
+    padding: 10px;
+}
+#logoutBtn{
+    display: flex;
+    align-content: flex-end;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+.item-a {
+    grid-area: header;
+}
+.item-b1 {
+    grid-area: main1;
+    /* font-size: 20px; */
+}
+.item-b2 {
+    grid-area: main2;
+}
+.item-b3 {
+    grid-area: main3;
+}
+.item-c {
+    grid-area: sidebar;
+}
+.item-d {
+    grid-area: footer;
+}
+.card-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header header header"
+        "main1 main1 main2 main3"
+        "footer footer footer footer";
+}
+
+#card {
+    border-radius: 5px;
+    border: solid, green, 3px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background: #232427;
+  color: rgb(0, 184, 92);
+}
+

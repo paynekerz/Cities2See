@@ -89,5 +89,5 @@ deletebtns.forEach(button =>{
 
 document.querySelector(".searchACity").addEventListener("submit", searchEventHandler);
 document.querySelector(".cityOptions").addEventListener("click", cityDataEventHandler);
-// document.querySelectorAll(".delete-btn").addEventListener("click", deleteCity);
+
 

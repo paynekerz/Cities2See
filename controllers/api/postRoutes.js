@@ -13,7 +13,7 @@ router.post("/", withAuth, async (req, res) => {
         
         const options = {
             method:"GET",
-            url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?countryIds=US&namePrefix=${cit}`,
+            url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=US&namePrefix=${cit}`,
             headers: {'x-rapidapi-key': 'cfae163e6amshce157a4d53b70e4p11e7d3jsnbe82b2369e60',
                     'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
             }

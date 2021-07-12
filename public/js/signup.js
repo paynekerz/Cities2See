@@ -16,15 +16,7 @@ const signup = async (event) => {
             alert("Could not create account. Please insert valid characters");
         }
     }
-}
-
-// const redirectSignin = async (event) => {
-//     event.preventDefault();
-
-//     document.location.replace("/");
-// }
+};
 
 document.querySelector("#signUpBtn").addEventListener("click", signup);
 document.querySelector("#signUpBtn").addEventListener("click", signup);
-
-// document.querySelector("#signInBtn").addEventListener("click", redirectSignin);

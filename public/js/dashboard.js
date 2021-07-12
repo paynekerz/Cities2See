@@ -13,7 +13,7 @@ const searchEventHandler = async (event) => {
         });
 
         if(response.ok) {
-            console.log("we got the first API post");
+            // console.log("we got the first API post");
             const result = await response.json();
             // console.log(result);
 
@@ -23,6 +23,7 @@ const searchEventHandler = async (event) => {
 
             const citiesBtnDiv = document.querySelector(".cityOptions");
 
+            //loop over cities array and make button for each city
             for(let index = 0; index < cities.length; index++) {
                 const cityName = cities[index].city;
                 const cityState = cities[index].state;

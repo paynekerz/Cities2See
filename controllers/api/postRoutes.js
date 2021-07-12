@@ -2,6 +2,7 @@ const router = require("express").Router();
 const axios = require("axios").default;
 const { Search } = require("../../models");
 const withAuth = require("../../utils/auth");
+require('dotenv').config();
 
 //GEODB ROUTES (post, delete) --------------------------
 // for post /api/geodb
@@ -14,7 +15,7 @@ router.post("/", withAuth, async (req, res) => {
       method: "GET",
       url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=US&namePrefix=${cit}`,
       headers: {
-        "x-rapidapi-key": "cfae163e6amshce157a4d53b70e4p11e7d3jsnbe82b2369e60",
+        "x-rapidapi-key": process.env.API_KEY,
         "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
       },
     };
@@ -57,7 +58,7 @@ router.post("/citydetails", withAuth, async (req, res) => {
       method: "GET",
       url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${cityId}`,
       headers: {
-        "x-rapidapi-key": "cfae163e6amshce157a4d53b70e4p11e7d3jsnbe82b2369e60",
+        "x-rapidapi-key": process.env.API_KEY,
         "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
       },
     };

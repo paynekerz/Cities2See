@@ -2,6 +2,7 @@ const router = require("express").Router();
 const axios = require("axios").default;
 const { Search } = require("../../models");
 const withAuth = require("../../utils/auth");
+require('dotenv').config();
 
 //GEODB ROUTES (post, delete) --------------------------
 // for post /api/geodb

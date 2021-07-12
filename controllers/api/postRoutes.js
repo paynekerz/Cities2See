@@ -1,52 +1,40 @@
 const router = require("express").Router();
 const axios = require("axios").default;
-const { Search, User } = require("../../models");
+const { Search } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 
 //GEODB ROUTES (post, delete) --------------------------
 // for post /api/geodb
-router.post("/geodb", withAuth, async (req, res) => {
+// this first post request will help us get a list of city names to dynamically create buttons in the dashboard after a search
+router.post("/", withAuth, async (req, res) => {
     try{
-        //need to get city name from search
-            //find something from Search model which grabs what was sent from dashboard.js
-            //through js, lowercase submited search and grab first three letters of city name = ${cit}
-
-        if(/*data from model is there*/ ) {
-            const options = {
-                method:"GET",
-                url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities`,
-                params: {limit: "1", countryIds: "USA", namePrefix: `${cit}` },
-                headers: {'x-rapidapi-key': 'c57ab5b39amsh02624b821726540p192f21jsnc14789484964',
-                        'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
-                }
-            };
-    
-            axios.request(options).then(function (response) {
-                console.log(response.data.wikiDataId);
-                const cityId = response.data.wikiDataId;
-                const options = {
-                    method:"GET",
-                    url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${cityId}`,
-                    headers: {'x-rapidapi-key': 'c57ab5b39amsh02624b821726540p192f21jsnc14789484964',
-                            'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
-                    }
-                };
+        const cit = req.body.cityParam;
         
-                axios.request(options).then(function (response) {
-                    console.log(response.data);
-                }).catch(function (error) {
-                    console.error(error);
-                });
+        const options = {
+            method:"GET",
+            url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=US&namePrefix=${cit}`,
+            headers: {'x-rapidapi-key': 'cfae163e6amshce157a4d53b70e4p11e7d3jsnbe82b2369e60',
+                    'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
+            }
+        };
 
-            }).catch(function (error) {
-                console.error(error);
-            });
+        axios.request(options).then(function (response) {
+            // console.log(response.data)
+        
+            const citiesData = response.data.data;
 
-    
-        }
+            const cities = citiesData.map(city => ({city: city.name, state: city.regionCode, id: city.wikiDataId}));
+
+            // console.log(cities);
+
+            //sending it back to front end
+            res.json(cities);
 
 
+        }).catch(function (error) {
+            console.error(error);
+        });
 
     } catch (err) {
         console.log(err);
@@ -54,5 +42,46 @@ router.post("/geodb", withAuth, async (req, res) => {
     }
 });
 
+// for post /api/geodb/citydetails
+// this one will create our instance of our Search model
+router.post("/citydetails", withAuth, async (req, res) => {
+    try {
+        const cityId = req.body.id;
+        console.log(cityId);
+
+        const options = {
+            method:"GET",
+            url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${cityId}`,
+            headers: {'x-rapidapi-key': 'cfae163e6amshce157a4d53b70e4p11e7d3jsnbe82b2369e60',
+                    'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com'
+            }
+        };
+
+        axios.request(options).then(function (response) {
+           //this data should be the city data that we want to append to our page
+            console.log("This is our response which is like req.body ");
+
+            const cityDetails = response.data.data;
+            console.log(cityDetails);
+
+            const postCityData =  Search.create({
+                ...cityDetails,
+                user_id: req.session.user_id,
+            });
+
+            res.status(200).json(postCityData);
+
+        }).catch(function (error) {
+            console.error(error);
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
+
+
 // for delete /api/geodb/:id
 
+
+module.exports = router;

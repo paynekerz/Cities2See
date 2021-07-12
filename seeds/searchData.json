@@ -1,0 +1,12 @@
+[
+    {
+        "id": "1",
+        "city": "Tucson",
+        "regionCode": "AZ",
+        "population": "520116",
+        "elevationMeters": "728",
+        "timezone": "America__Phoenix",
+        "latitude": "32.221666666",
+        "longitude": "-110.926388888"
+    }
+]

@@ -1,55 +1,65 @@
- <div class="container right-align">
-    <button class="btn waves-effect waves-light teal darken-3" type="submit" name="action" id="logoutBtn">logout
-        <i class="material-icons right">send</i>
-    </button>
+<div class="container right-align">
+  <button
+    class="btn waves-effect waves-light teal darken-3"
+    type="submit"
+    name="action"
+    id="logoutBtn"
+  >logout
+    <i class="material-icons right">send</i>
+  </button>
 </div>
- 
+
 <div class="row">
-        <div class="col s4">
-            <form class="searchACity">
-                <h4>Search A City</h4>
-                
-                <div class="input-field">
-                    <input 
-                    id="searchbar" 
-                    type="text" 
-                    class="validate"
-                    for="searchbar"
-                    placeholder="Search for City Here"
-                    >
-                    <button class="btn waves-effect waves-light teal" type="submit" name="action" id="searchBtn">Search</button>
-                </div>
-                Visited Cities
-            </form>
+  <div class="col s4">
+    <form class="searchACity">
+      <h4>Search A City</h4>
 
-            <div class="cityOptions"> 
-                <h5>Select Your Preferred City</h5>
+      <div class="input-field">
+        <input
+          id="searchbar"
+          type="text"
+          class="validate"
+          for="searchbar"
+          placeholder="Search for City Here"
+        />
+        <button
+          class="btn waves-effect waves-light teal"
+          type="submit"
+          name="action"
+          id="searchBtn"
+        >Search</button>
+      </div>
+      Visited Cities
+    </form>
+
+    <div class="cityOptions">
+      <h5>Select Your Preferred City</h5>
+    </div>
+  </div>
+
+  <div class="col s8">
+    <h2> Welcome back {{username}}! </h2>
+    <div class="row">
+      <div class="col s12 m8x">
+        {{#each cities as |city|}}
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <p class="item-">City Name: {{city.city}}</p>
+              <p class="item-">State: {{city.regionCode}}</p>
+              <p class="item-">Population: {{city.population}}</p>
+              <p class="item-">Elevation: {{city.elevationMeters}}</p>
+              <p class="item-"> Timezone: {{city.timezone}}</p>
+              <p class="item-">Coordinates:
+                {{city.latitude}},
+                {{city.longitude}}</p>
+              <button class="delete-btn btn" data-id={{city.id}}>Delete City</button>
             </div>
-        </div>
-
-
-        <div class="col s8">
-            <h2> Welcome back {{username}}! </h2>
-            <div class="row">
-                <div class="col s12 m8x">
-                {{#each cities as |city|}}
-                  <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                      <p class="item-a">City Name: {{city.city}}</p>
-                      <p class="item-c">State: {{city.regionCode}}</p>
-                      <p class="item-b1">Population: {{city.population}}</p>
-                      <p class="item-b2">Elevation: {{city.elevationMeters}}</p>
-                      <p class="item-b3"> Timezone: {{city.timezone}}</p>
-                      <p class="item-d">Coordinates: {{city.latitude}}, {{city.longitude}}</p>
-                      <button class="delete-btn btn" data-id= {{city.id}}>Delete City</button>
-                    </div>
-                  </div>
-                {{/each}}
-                </div>
-              </div>
-        </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
 </div>
-
 
 <script src="/js/dashboard.js"></script>
 <script src="/js/logout.js"></script>

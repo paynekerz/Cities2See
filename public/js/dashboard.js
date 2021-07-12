@@ -70,15 +70,16 @@ const cityDataEventHandler = async (event) => {
     };
 }
 //delete city card
-function deleteCity(event) {
-    event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode)
-    fetch(`/api/geodb/${event.target.getAttribute("data-id")}`, {
+async function deleteCity(event) {
+    // event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode)
+    console.log(event.target.getAttribute("data-id"))
+    const response = await fetch(`/api/geodb/${event.target.getAttribute("data-id")}`, {
         method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json'
-          },
+        // headers: {
+        //     'Content-Type': 'application/json'
+        //   },
     })
-
+   location.reload()
 }
 
 var deletebtns= document.querySelectorAll(".delete-btn")

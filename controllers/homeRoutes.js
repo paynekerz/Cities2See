@@ -32,7 +32,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
         });
 
         const user = userData.get({ plain: true });
-
+        
         //find all of the city data that was saved by the user
         // the data comes from the instance of Search
         const searchData = await Search.findAll({
@@ -49,7 +49,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 
         //create an array of all the city data
         const cities = searchData.map((city) => city.get({ plain: true }));
-        
+        console.log
         // console.log(posts);
 
         res.render("dashboard", {

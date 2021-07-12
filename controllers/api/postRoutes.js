@@ -64,6 +64,7 @@ router.post("/citydetails", withAuth, async (req, res) => {
             const cityDetails = response.data.data;
             console.log(cityDetails);
 
+            // look 
             const postCityData =  Search.create({
                 ...cityDetails,
                 user_id: req.session.user_id,
@@ -82,6 +83,13 @@ router.post("/citydetails", withAuth, async (req, res) => {
 
 
 // for delete /api/geodb/:id
+router.delete("/api/geodb/:id", async (req, res) => {
+    Search.destroy({
+        where: {
+           id: (req.params.id)
+        }
+    })
+})
 
 
 module.exports = router;

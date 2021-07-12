@@ -69,10 +69,24 @@ const cityDataEventHandler = async (event) => {
 
     };
 }
+//delete city card
+function deleteCity(event) {
+    event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode)
+    fetch(`/api/geodb/${event.target.getAttribute("data-id")}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+          },
+    })
+
+}
+
+var deletebtns= document.querySelectorAll(".delete-btn")
+deletebtns.forEach(button =>{
+    button.addEventListener("click", deleteCity);
+})
 
 document.querySelector(".searchACity").addEventListener("submit", searchEventHandler);
 document.querySelector(".cityOptions").addEventListener("click", cityDataEventHandler);
+// document.querySelectorAll(".delete-btn").addEventListener("click", deleteCity);
 
-
-
-//delete city card

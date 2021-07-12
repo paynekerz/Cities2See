@@ -36,6 +36,9 @@ router.get("/dashboard", withAuth, async (req, res) => {
         //find all of the city data that was saved by the user
         // the data comes from the instance of Search
         const searchData = await Search.findAll({
+            where: {
+                user_id: req.session.user_id
+            },
             include: [
                 {
                     model: User,

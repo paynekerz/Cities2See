@@ -49,7 +49,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 
         //create an array of all the city data
         const cities = searchData.map((city) => city.get({ plain: true }));
-
+        
         // console.log(posts);
 
         res.render("dashboard", {

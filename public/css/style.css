@@ -66,3 +66,10 @@ body {
   color: rgb(0, 184, 92);
 }
 
+input, select, textarea{
+    color: #f6f6f6fa;
+}
+
+textarea:focus, input:focus {
+    color: #fbfbfb;
+}

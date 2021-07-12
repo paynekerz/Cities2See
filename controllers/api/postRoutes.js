@@ -15,6 +15,8 @@ router.post("/", withAuth, async (req, res) => {
       method: "GET",
       url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=US&namePrefix=${cit}`,
       headers: {
+          //this api key is stored in the .env file
+          //make sure to require("doenv").config() on top to make it work
         "x-rapidapi-key": process.env.API_KEY,
         "x-rapidapi-host": "wft-geo-db.p.rapidapi.com",
       },
@@ -67,8 +69,7 @@ router.post("/citydetails", withAuth, async (req, res) => {
       .request(options)
       .then(function (response) {
         //this data should be the city data that we want to append to our page
-        console.log("This is our response which is like req.body ");
-
+        //since it is nested inside an object, need to do response.data.data
         const cityDetails = response.data.data;
         console.log(cityDetails);
 

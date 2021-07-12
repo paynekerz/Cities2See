@@ -1,12 +1,14 @@
-<div class="container right-align">
-  <button
-    class="btn waves-effect waves-light teal darken-3"
-    type="submit"
-    name="action"
-    id="logoutBtn"
-  >logout
-    <i class="material-icons right">send</i>
-  </button>
+<div class="section">
+  <div class="right">
+      <button
+        class="btn waves-effect waves-light teal darken-3"
+        type="submit"
+        name="action"
+        id="logoutBtn"
+      >logout
+        <i class="material-icons right">send</i>
+      </button>
+  </div>
 </div>
 
 <div class="row">
@@ -38,7 +40,7 @@
   </div>
 
   <div class="col s8">
-    <h2> Welcome back {{username}}! </h2>
+    <h2> Welcome back, {{username}}! </h2>
     <div class="row">
         {{#each cities as |city|}}
       <div class="col s12 m8x">
@@ -52,7 +54,7 @@
               <p class="item-">Coordinates:
                 {{city.latitude}},
                 {{city.longitude}}</p>
-              <button class="delete-btn btn flow-text" data-id={{city.id}}>Delete City</button>
+              <button class="delete-btn btn flow-text item-d" data-id={{city.id}}>Delete City</button>
             </div>
           </div>
       </div>

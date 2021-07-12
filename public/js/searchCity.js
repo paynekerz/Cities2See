@@ -1,10 +1,10 @@
 
-function formSubmit() {
-    tempHolder.innerHTML = "";
-    cityName = input_City.value;
-    console.log(cityName);
-    getCoords(cityName);
-  }
+// function formSubmit() {
+//     tempHolder.innerHTML = "";
+//     cityName = input_City.value;
+//     console.log(cityName);
+//     getCoords(cityName);
+//   }
 
 
 
